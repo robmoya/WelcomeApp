@@ -1,0 +1,34 @@
+{
+	"name": "WelcomeApp",
+	"description": "",
+	"version": "0.0.1",
+	"threevot": {
+	  "displayName" : "WelcomeApp",
+    "size" : "small",
+  	"private": false,
+  	"privateCode": "",
+		"external": {
+		},
+		"entries": {
+			"index": [
+				"desktop",
+				"laptop",
+				"phone",
+				"tablet"
+			]
+		},
+		"extensions": [
+			".coffee",
+			".eco",
+			".html"
+		],
+		"transforms": [
+			"coffeeify",
+			"brfs"
+		],
+		"gitDependencies": {}
+	},
+	"dependencies": {
+	  "3vot" : "0.0.3"
+	}
+}

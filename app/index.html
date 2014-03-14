@@ -1,0 +1,56 @@
+<html> 
+  <head>
+
+    <title>3VOT Welcome App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" media="screen" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  
+<link rel="stylesheet" type="text/css" href="//hangouts-91941.use1-2.nitrousbox.com/3vot/WelcomeApp/assets/style.css" />
+  
+    
+  </head>
+
+  <body>
+
+  <div stlye="background-color: black; color: white;" class="responsiveCheckWrapper"><div data-device="phone" class="visible-xs responsiveCheck">Loading 3VOT Mobile</div>
+  <div data-device="tablet" class="visible-sm responsiveCheck">Loading 3VOT Tablet</div><div data-device="laptop" class="visible-md responsiveCheck"> Loading3VOT Laptop </div>
+  <div data-device="desktop" class="visible-lg responsiveCheck">Loading 3VOT TV/Desktop</div></div>
+  
+  <script id="loadarea" type="text/javascript"></script>
+  
+  <script>
+    var package = {"name":"WelcomeApp","description":"","version":"0.0.1","threevot":{"displayName":"WelcomeApp","size":"small","private":false,"privateCode":"","external":{},"entries":{"index":["desktop","laptop","phone","tablet"]},"extensions":[".coffee",".eco",".html"],"transforms":["coffeeify","brfs"],"gitDependencies":{}},"dependencies":{"3vot":"0.0.3"}};
+    
+    var _3vot = {};
+    var entries = package.threevot.entries;
+
+    var responsiveDivs = document.getElementsByClassName("responsiveCheck");
+    
+    _3vot.device = "";
+    
+    for(var i=0; i<responsiveDivs.length; i++){ 
+      var style = getComputedStyle( responsiveDivs[i] ); 
+        if(style.display==="block"){ 
+          _3vot.device = responsiveDivs[i].dataset.device; 
+        }   
+      }
+
+      var fileToCall = '';
+      _3vot.domain = 'hangouts-91941.use1-2.nitrousbox.com';
+      _3vot.path = '//' + _3vot.domain + '/3vot/' + package.name;
+      
+      for(entryKey in entries){ 
+        var entryValue = entries[entryKey]; 
+        if(entryValue.indexOf(_3vot.device) > -1){ 
+          fileToCall = entryKey 
+          }
+        }
+        
+      document.getElementById('loadarea').src=  _3vot.path + '/' + fileToCall + '.js';
+      
+      console.log(fileToCall);
+    </script>
+    
+  </body> 
+</html>
